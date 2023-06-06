@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ledge Climb
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: b36fa5b92da110141a5b1720247454b7, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: 850e1afb111f8d54e8fa1f0353399e8c, type: 3}
+    - time: 0.2
+      value: {fileID: 21300000, guid: 61a9c485f05492249bcb7ab74bbddebb, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: b32b73f25be10c140bd7244173ee4d93, type: 3}
+    - time: 0.4
+      value: {fileID: 21300000, guid: 95fe1a6e8ca6b5b43a8391f42ae8746f, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 9e51692b797293c48bf9ed1b88027897, type: 3}
+    - time: 0.6
+      value: {fileID: 21300000, guid: 4b2e83703b9b4a24f8dfc27a3929dfbc, type: 3}
+    - time: 0.7
+      value: {fileID: 21300000, guid: e3a235ee058f7e0439cfa736bb9021fa, type: 3}
+    - time: 0.8
+      value: {fileID: 21300000, guid: 8709bd2fe17a216478fd804f8e8c604d, type: 3}
+    - time: 0.9
+      value: {fileID: 21300000, guid: 437d9322ad1ae0c4eb629a68c947c51c, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 10
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: b36fa5b92da110141a5b1720247454b7, type: 3}
+    - {fileID: 21300000, guid: 850e1afb111f8d54e8fa1f0353399e8c, type: 3}
+    - {fileID: 21300000, guid: 61a9c485f05492249bcb7ab74bbddebb, type: 3}
+    - {fileID: 21300000, guid: b32b73f25be10c140bd7244173ee4d93, type: 3}
+    - {fileID: 21300000, guid: 95fe1a6e8ca6b5b43a8391f42ae8746f, type: 3}
+    - {fileID: 21300000, guid: 9e51692b797293c48bf9ed1b88027897, type: 3}
+    - {fileID: 21300000, guid: 4b2e83703b9b4a24f8dfc27a3929dfbc, type: 3}
+    - {fileID: 21300000, guid: e3a235ee058f7e0439cfa736bb9021fa, type: 3}
+    - {fileID: 21300000, guid: 8709bd2fe17a216478fd804f8e8c604d, type: 3}
+    - {fileID: 21300000, guid: 437d9322ad1ae0c4eb629a68c947c51c, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events:
+  - time: 0.6
+    functionName: TeleportPlayerObjectLedge
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: SwitchStateToGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
