@@ -24,6 +24,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public bool _canJump;
     public bool _canScaleWall;
     public bool _canMove;
+    public bool _canFlipSprite;
 
     //Input Variables
     public bool _isJumpPressed;
@@ -34,6 +35,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public bool _isParkourPressed;
     public bool _isDownKeyPressed;
     public bool _isCrouchPressed;
+    public bool _isShiftPressed;
 
 
     private void Awake()
@@ -65,7 +67,7 @@ public class PlayerStateMachine : MonoBehaviour {
         _playerStats.isTouchingWallRight = _playerStats.TouchingRightWallCheck();
         _playerStats.isNearLedgeLeft = _playerStats.NearEdgeLeftCheck();
         _playerStats.isNearLedgeRight = _playerStats.NearEdgeRightCheck();
-        if(!_playerStats.isInAir){
+        if(!_playerStats.isInAir && _canFlipSprite){
             if(_movementX < 0 || _playerStats.isTouchingWallLeft){
                 _spriteRenderer.flipX = true;
             } else if(_movementX > 0 || _playerStats.isTouchingWallRight){
@@ -216,6 +218,15 @@ public class PlayerStateMachine : MonoBehaviour {
             _isCrouchPressed = true;
         } else {
             _isCrouchPressed = false;
+        }
+    }
+
+    public void OnShift(InputValue context){
+        float input = context.Get<float>();
+        if(input > 0){
+            _isShiftPressed = true;
+        } else {
+            _isShiftPressed = false;
         }
     }
     #endregion

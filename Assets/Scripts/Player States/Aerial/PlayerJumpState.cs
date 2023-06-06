@@ -31,9 +31,12 @@ public class PlayerJumpState : PlayerBaseState {
         _ctx._playerStats.isJumping = false;
     }
     public override void CheckSwitchStates(){
+        if(_ctx._playerStats.isTouchingWallLeft || _ctx._playerStats.isTouchingWallRight){
+            SwitchState(_factory.WallGrab());
+        }
         if(_ctx._rb.velocity.y <= 0f){
             SwitchState(_factory.Falling());
-        }
+        } 
     }
 
     public override void InitializeSubState(){
@@ -41,6 +44,6 @@ public class PlayerJumpState : PlayerBaseState {
     }
 
     private void HandleJumping(){
-        _ctx._rb.velocity = new Vector2(_ctx._playerStats.maxSpeed * 2/3 * _ctx._movementX, _ctx._playerStats.jumpVelocity);
+        _ctx._rb.velocity = new Vector2(_ctx._playerStats.currentSpeed * 2/3 * _ctx._movementX, _ctx._playerStats.jumpVelocity);
     }
 }

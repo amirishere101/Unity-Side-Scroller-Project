@@ -81,4 +81,9 @@ public class PlayerStateFactory {
     public PlayerBaseState CrouchWalk(){
         return new CrouchWalk(_context, this);
     }
+
+    public PlayerBaseState Run(){
+        return new PlayerSprint(_context, this);
+    }
+
 }

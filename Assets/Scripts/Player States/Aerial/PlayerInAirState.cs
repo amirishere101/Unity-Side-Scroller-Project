@@ -10,7 +10,7 @@ public class PlayerInAirState : PlayerBaseState {
 
     public override void CheckSwitchStates() {
         if((_ctx._isParkourPressed && _ctx._canScaleWall) || ((_ctx._playerStats.isTouchingWallLeft && _ctx._movementLeft < 0) 
-        || (_ctx._playerStats.isTouchingWallRight && _ctx._movementRight > 0))){
+        || (_ctx._playerStats.isTouchingWallRight && _ctx._movementRight > 0)) || (_ctx._playerStats.isJumping &&(_ctx._playerStats.isTouchingWallLeft || _ctx._playerStats.isTouchingWallRight))){
             SwitchState(_factory.WallGrab());
         }
         if(_ctx._playerStats.playerLanded){
@@ -31,7 +31,7 @@ public class PlayerInAirState : PlayerBaseState {
     }
 
     public override void InitializeSubState() {
-        if(_ctx._isJumpPressed) {
+        if(_ctx._isJumpPressed && _ctx._rb.velocity.y == 0) {
             SetSubState(_factory.Jump());
         } else {
             SetSubState(_factory.Falling());

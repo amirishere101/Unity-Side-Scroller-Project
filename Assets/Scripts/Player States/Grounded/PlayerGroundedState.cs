@@ -12,6 +12,7 @@ public class PlayerGroundedState : PlayerBaseState {
     public override void EnterState(){
         Debug.Log("Player is Grounded " + Time.time);
         _ctx._canJump = true;
+        _ctx._canFlipSprite = true;
     }
 
     public override void UpdateState(){
@@ -31,5 +32,7 @@ public class PlayerGroundedState : PlayerBaseState {
         SetSubState(_factory.UnCrouch());
     }
 
-    public override void ExitState(){}
+    public override void ExitState(){
+        _ctx._canFlipSprite = false;
+    }
 }

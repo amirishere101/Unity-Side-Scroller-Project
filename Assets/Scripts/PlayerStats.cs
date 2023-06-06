@@ -12,7 +12,9 @@ public class PlayerStats : MonoBehaviour {
     public float currentStamina;
 
     [Header("Movement")]
-    public float maxSpeed;
+    public float currentSpeed;
+    public float walkSpeed;
+    public float runSpeed;
     public float climbSpeed;
     public float climbSlideSpeed;
 

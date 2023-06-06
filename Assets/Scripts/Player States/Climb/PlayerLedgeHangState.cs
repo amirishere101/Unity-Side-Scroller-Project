@@ -19,10 +19,11 @@ public class PlayerLedgeHangState : PlayerBaseState {
 
     }
     public override void CheckSwitchStates(){
-        if(_ctx._isJumpPressed){
+        if(_ctx._isJumpPressed && ((_ctx._playerStats.isTouchingWallRight && _ctx._movementLeft < 0) || (_ctx._playerStats.isTouchingWallLeft && _ctx._movementRight > 0))){
+            SwitchState(_factory.WallJump());
+        } else if(_ctx._isJumpPressed){
             SwitchState(_factory.LedgeClimb());
-        }
-        if(_ctx._isDownKeyPressed){
+        } else if(_ctx._isDownKeyPressed){
             SwitchState(_factory.WallSlide());
         }
     }

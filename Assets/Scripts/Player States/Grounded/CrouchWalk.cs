@@ -23,7 +23,7 @@ public class CrouchWalk : PlayerBaseState
     }
 
     private void HandleCrouchWalk(){
-        _ctx._rb.velocity = new Vector2(_ctx._movementX * _ctx._playerStats.maxSpeed * 0.66f, _ctx._rb.velocity.y);
+        _ctx._rb.velocity = new Vector2(_ctx._movementX * _ctx._playerStats.currentSpeed * 0.66f, _ctx._rb.velocity.y);
     }
 
     public override void ExitState(){}
