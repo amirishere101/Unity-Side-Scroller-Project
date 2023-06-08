@@ -11,7 +11,10 @@ public class PlayerWallGrabState : PlayerBaseState {
 
     public override void EnterState() {
         Debug.Log("Wall Grab State " + Time.time);
+        _ctx.DisableGravity();
+        _ctx._animationHandler.PlayAnimation("WallHang");
         _ctx._playerStats.isClimbing = true;
+        _ctx._rb.velocity = new Vector2(50* _ctx._movementX, 0);
     }
 
     public override void UpdateState() {
@@ -22,9 +25,6 @@ public class PlayerWallGrabState : PlayerBaseState {
         if(_ctx._playerStats.isInAir){
             SwitchState(_factory.Aerial());
         }
-        if(_ctx._isParkourPressed){
-            SwitchState(_factory.Grounded());
-        }
     }
 
     public override void ExitState() {
@@ -33,6 +33,10 @@ public class PlayerWallGrabState : PlayerBaseState {
     }
 
     public override void InitializeSubState() {
-        SetSubState(_factory.WallHang());
+        if(!_ctx._playerStats.playerLanded){
+            SetSubState(_factory.WallSlide());
+        } else {
+            SetSubState(_factory.WallHang());
+        }
     }
 }

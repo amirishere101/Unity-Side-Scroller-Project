@@ -12,19 +12,20 @@ public class PlayerStateMachine : MonoBehaviour {
     public PlayerBaseState _currentState;
     public PlayerStateFactory _states;
     public SpriteRenderer _spriteRenderer;
-    public GameObject _currentWall;
     public GameObject _groundChecker;
+    public Knife _knife;
 
 
     //variables
     public float _movementX;
-    public float _climableWallPositionX;
+    public int direction;
 
     //player flags
     public bool _canJump;
-    public bool _canScaleWall;
     public bool _canMove;
     public bool _canFlipSprite;
+    public bool _isInteracting;
+    public bool _isAttacking;
 
     //Input Variables
     public bool _isJumpPressed;
@@ -32,19 +33,19 @@ public class PlayerStateMachine : MonoBehaviour {
     public float _movementRight;
     public float _movementLeft;
     public bool _isClimbPressed;
-    public bool _isParkourPressed;
     public bool _isDownKeyPressed;
     public bool _isCrouchPressed;
     public bool _isShiftPressed;
+    public bool _isAttackPressed;
 
 
-    private void Awake()
-    {
+    private void Awake(){
         //set reference variables   
         _playerStats = GetComponent<PlayerStats>();
         _rb = GetComponent<Rigidbody2D>();
         _animationHandler = GetComponent<AnimationHandler>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _knife = GetComponentInChildren<Knife>();
         //setup state
         _states = new PlayerStateFactory(this);
         //
@@ -62,7 +63,6 @@ public class PlayerStateMachine : MonoBehaviour {
     }
 
     private void UpdateValues(){
-        //_playerStats.isGrounded = _playerStats.GroundedCheck();
         _playerStats.isTouchingWallLeft = _playerStats.TouchingLeftWallCheck();
         _playerStats.isTouchingWallRight = _playerStats.TouchingRightWallCheck();
         _playerStats.isNearLedgeLeft = _playerStats.NearEdgeLeftCheck();
@@ -74,29 +74,10 @@ public class PlayerStateMachine : MonoBehaviour {
                 _spriteRenderer.flipX = false;
             }
         }
-    }
-
-    private void UpdateOnWallEntrance(){
-        if(_canScaleWall){
-            if(_currentWall.GetComponent<WallClimbingBehaviour>().isClimbableFromRightSide){
-                _climableWallPositionX = _currentWall.transform.position.x + _currentWall.GetComponent<WallClimbingBehaviour>().offsetPlayerAmount;
-                if(_playerStats.isClimbing){
-                    _playerStats.isTouchingWallLeft = true;
-                    _playerStats.isNearLedgeLeft = _playerStats.NearEdgeLeftCheck();
-                } else {
-                    _playerStats.isTouchingWallLeft = false;
-                    _playerStats.isNearLedgeLeft = false;
-                }
-            } else if(_currentWall.GetComponent<WallClimbingBehaviour>().isClimbableFromLeftSide) {
-                _climableWallPositionX = _currentWall.transform.position.x - _currentWall.GetComponent<WallClimbingBehaviour>().offsetPlayerAmount;
-                if(_playerStats.isClimbing){
-                    _playerStats.isTouchingWallRight = true;
-                    _playerStats.isNearLedgeRight = _playerStats.NearEdgeRightCheck();
-                } else {
-                    _playerStats.isTouchingWallRight = false;
-                    _playerStats.isNearLedgeRight = false;
-                }
-            }
+        if(_spriteRenderer.flipX){
+            direction = -1;
+        } else {
+            direction = 1;
         }
     }
 
@@ -112,17 +93,16 @@ public class PlayerStateMachine : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col){
-        if(col.gameObject.tag == "Climbable"){
-            _currentWall = col.gameObject;
-            _canScaleWall = true;
-        }
+    public void PlayerIsInteracting(){
+        _isInteracting = true;
     }
 
-    void OnTriggerExit2D(Collider2D col){
-        if(col.gameObject.tag == "Climbable"){
-            _canScaleWall = false;
-        }
+    public void StopPlayerInteracting(){
+        _isInteracting = false;
+    }
+
+    public void AllowCombo(){
+        _animationHandler.SetBool("Combo", false);
     }
 
     private void UpdateMovementInput(){
@@ -140,14 +120,6 @@ public class PlayerStateMachine : MonoBehaviour {
 
     public void EnableGravity(){
         _rb.gravityScale = 1;
-    }
-
-    public void FlipSprite(){
-        if(_spriteRenderer.flipX == true){
-            _spriteRenderer.flipX = false;
-        } else {
-           _spriteRenderer.flipX = true; 
-        }
     }
 
     public void SwitchStateToGrounded(){
@@ -176,10 +148,8 @@ public class PlayerStateMachine : MonoBehaviour {
 
     public void OnJump(InputValue context){
         float input = context.Get<float>();
-        if(!_isJumpPressed){
-            if(input > 0){
-                _isJumpPressed = true;
-            }
+        if(input > 0){
+            _isJumpPressed = true;
         } else {
             _isJumpPressed = false;
         }
@@ -191,15 +161,6 @@ public class PlayerStateMachine : MonoBehaviour {
             _isClimbPressed = true;
         } else {
             _isClimbPressed = false;
-        }
-    }
-
-    public void OnParkour(InputValue context){
-        float input = context.Get<float>();
-        if(input > 0){
-            _isParkourPressed = true;
-        } else {
-            _isParkourPressed = false;
         }
     }
 
@@ -227,6 +188,19 @@ public class PlayerStateMachine : MonoBehaviour {
             _isShiftPressed = true;
         } else {
             _isShiftPressed = false;
+        }
+    }
+
+    public void OnAttack(InputValue context){
+        float input = context.Get<float>();
+        if(_isAttacking){
+            _isAttackPressed = false;
+        } else {
+            if(input > 0){
+            _isAttackPressed = true;
+        } else {
+            _isAttackPressed = false;
+        }
         }
     }
     #endregion

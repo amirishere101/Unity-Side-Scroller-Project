@@ -10,15 +10,17 @@ public class PlayerWalkState : PlayerBaseState {
         Debug.Log("Player is Walking " + Time.time);
         _ctx._animationHandler.PlayAnimation("Walk");
         _ctx._playerStats.currentSpeed = _ctx._playerStats.walkSpeed;
+        HandleMovement();
     }
 
     public override void UpdateState(){
         CheckSwitchStates();
-        HandleMovement();
     }
 
     public override void CheckSwitchStates(){
-        if(!_ctx._movementInputDetected) {
+        if(_ctx._isAttackPressed){
+            SwitchState(_factory.KnifeAttack1());
+        }else if(!_ctx._movementInputDetected) {
             SwitchState(_factory.Idle());
         } else if(_ctx._isShiftPressed){
             SwitchState(_factory.Run());
@@ -26,6 +28,7 @@ public class PlayerWalkState : PlayerBaseState {
     }
 
     public override void ExitState(){
+        Debug.Log("Stop Walking" + Time.time);
         _ctx._rb.velocity = Vector2.zero;
         _ctx._playerStats.currentSpeed = 0;
     }

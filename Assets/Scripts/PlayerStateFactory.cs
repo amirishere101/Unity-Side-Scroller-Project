@@ -86,4 +86,11 @@ public class PlayerStateFactory {
         return new PlayerSprint(_context, this);
     }
 
+    public PlayerBaseState KnifeAttack1(){
+        return new PlayerAttackState(_context, this);
+    }
+
+    public PlayerBaseState KnifeAttackCooldown(){
+        return new PlayerAttackCooldownState(_context, this);
+    }
 }

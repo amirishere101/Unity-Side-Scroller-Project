@@ -17,7 +17,9 @@ public class PlayerIdleState : PlayerBaseState {
     }
 
     public override void CheckSwitchStates(){
-        if(_ctx._movementInputDetected){
+        if(_ctx._isAttackPressed){
+            SwitchState(_factory.KnifeAttack1());
+        }else if(_ctx._movementInputDetected){
             SwitchState(_factory.Walk());
         }
     }

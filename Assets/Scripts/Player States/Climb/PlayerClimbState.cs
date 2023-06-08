@@ -17,7 +17,7 @@ public class PlayerClimbState : PlayerBaseState {
     }
 
     public override void ExitState(){
-        _ctx._rb.velocity = new Vector2(0, 0);
+        _ctx._rb.velocity = Vector2.zero;
     }
 
     public override void CheckSwitchStates(){
@@ -37,6 +37,6 @@ public class PlayerClimbState : PlayerBaseState {
     }
 
     private void HandleClimb(){
-        _ctx._rb.velocity = new Vector2(0, _ctx._playerStats.climbSpeed);
+        _ctx._rb.velocity = new Vector2(100 * _ctx.direction, _ctx._playerStats.climbSpeed);
     }
 }

@@ -42,15 +42,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Parkour",
-                    "type": "Value",
-                    "id": "e51a1600-ba08-4046-86b0-f6d9db1e8cdd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "DownKey",
                     "type": "Value",
                     "id": "72b0c975-666a-4b6d-8ef4-69ec137a884d",
@@ -72,6 +63,15 @@
                     "name": "Shift",
                     "type": "Value",
                     "id": "66a2bbd9-361b-44b2-94b8-064abd816e37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "caa63962-8289-48e5-8c73-9938f8a375cf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -125,17 +125,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5ed640d1-a9d8-461e-bf0e-8651a1d548d7",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Parkour",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "412c9d6c-6fe5-4898-913b-a9b53b2dcdab",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -164,6 +153,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c35920e-99d5-43be-b9f6-fefd46847385",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

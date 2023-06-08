@@ -9,6 +9,8 @@ public class PlayerLedgeHangState : PlayerBaseState {
     }
     public override void EnterState(){
         Debug.Log("Ledge Hang" + Time.time);
+        _ctx._rb.velocity = Vector2.zero;
+        HandleLedgeHang();
     }
 
     public override void UpdateState(){
@@ -30,5 +32,13 @@ public class PlayerLedgeHangState : PlayerBaseState {
 
     public override void InitializeSubState(){
 
+    }
+
+    void HandleLedgeHang(){
+        if(_ctx._playerStats.isNearLedgeLeft || _ctx._playerStats.isNearLedgeRight){
+            _ctx._rb.velocity = new Vector2(3 * _ctx.direction, -3);
+        }else{
+            _ctx._rb.velocity = Vector2.zero;
+        }
     }
 }

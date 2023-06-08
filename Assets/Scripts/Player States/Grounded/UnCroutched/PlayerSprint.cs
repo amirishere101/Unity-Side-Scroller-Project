@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSprint : PlayerBaseState
-{
-    public PlayerSprint(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) {
+public class PlayerSprint : PlayerBaseState {
+    public PlayerSprint(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) {}
+
+    public override void EnterState() {
+        Debug.Log("Player is Sprinting " + Time.time);
+        _ctx._animationHandler.PlayAnimation("Run");
+        _ctx._playerStats.currentSpeed = _ctx._playerStats.runSpeed;
+        HandleMovement();
     }
 
     public override void CheckSwitchStates() {
@@ -15,10 +20,8 @@ public class PlayerSprint : PlayerBaseState
         }
     }
 
-    public override void EnterState() {
-        Debug.Log("Player is Sprinting " + Time.time);
-        _ctx._animationHandler.PlayAnimation("Run");
-        _ctx._playerStats.currentSpeed = _ctx._playerStats.runSpeed;
+    public override void UpdateState(){
+        CheckSwitchStates();
     }
 
     public override void ExitState() {
@@ -27,11 +30,6 @@ public class PlayerSprint : PlayerBaseState
     }
 
     public override void InitializeSubState() {}
-
-    public override void UpdateState(){
-        CheckSwitchStates();
-        HandleMovement();
-    }
 
     private void HandleMovement(){
        _ctx._rb.velocity = new Vector2(_ctx._movementX * _ctx._playerStats.runSpeed, _ctx._rb.velocity.y); 

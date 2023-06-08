@@ -23,9 +23,6 @@ public class PlayerGroundedState : PlayerBaseState {
         if(!_ctx._playerStats.isGrounded || _ctx._playerStats.isInAir || _ctx._isJumpPressed){
             SwitchState(_factory.Aerial());
         }
-        if(_ctx._isParkourPressed && _ctx._canScaleWall){
-            SwitchState(_factory.WallGrab());
-        }
     }
 
     public override void InitializeSubState(){

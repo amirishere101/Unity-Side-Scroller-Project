@@ -18,14 +18,15 @@ public class PlayerWallSlideState : PlayerBaseState {
     }
 
     public override void ExitState(){
-        _ctx._rb.velocity = new Vector2(_ctx._rb.position.x, 0);
+        _ctx._rb.velocity = Vector2.zero;
     }
     public override void CheckSwitchStates(){
         if(_ctx._isJumpPressed){
             SwitchState(_factory.WallJump());
-        }
-        if(!_ctx._isDownKeyPressed){
+        }else if(!_ctx._isDownKeyPressed){
             SwitchState(_factory.WallHang());
+        } else if (_ctx._isClimbPressed){
+            SwitchState(_factory.Climb());
         }
     }
 
@@ -34,6 +35,6 @@ public class PlayerWallSlideState : PlayerBaseState {
     }
 
     private void HandleWallSlide(){
-        _ctx._rb.velocity = new Vector2(0, _ctx._playerStats.climbSlideSpeed *-1);
+        _ctx._rb.velocity = new Vector2(100 * _ctx.direction, _ctx._playerStats.climbSlideSpeed *-1);
     }
 }

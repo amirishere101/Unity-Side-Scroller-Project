@@ -31,9 +31,6 @@ public class PlayerJumpState : PlayerBaseState {
         _ctx._playerStats.isJumping = false;
     }
     public override void CheckSwitchStates(){
-        if(_ctx._playerStats.isTouchingWallLeft || _ctx._playerStats.isTouchingWallRight){
-            SwitchState(_factory.WallGrab());
-        }
         if(_ctx._rb.velocity.y <= 0f){
             SwitchState(_factory.Falling());
         } 
