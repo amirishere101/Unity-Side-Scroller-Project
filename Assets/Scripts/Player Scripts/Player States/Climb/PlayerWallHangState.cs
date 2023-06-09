@@ -10,7 +10,6 @@ public class PlayerWallHangState : PlayerBaseState {
 
     public override void EnterState(){
         Debug.Log("Wall Hang State  " + Time.time);
-        _ctx._animationHandler.PlayAnimation("WallHang");
     }
 
     public override void UpdateState(){

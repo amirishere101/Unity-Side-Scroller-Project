@@ -12,8 +12,10 @@ public class PlayerStateMachine : MonoBehaviour {
     public PlayerBaseState _currentState;
     public PlayerStateFactory _states;
     public SpriteRenderer _spriteRenderer;
-    public GameObject _groundChecker;
-    public Knife _knife;
+    public LedgeCheck _ledgeCheck;
+    [SerializeField] public GameObject _surroundingsCheck;
+    [SerializeField] public Knife _knife;
+    
 
 
     //variables
@@ -46,6 +48,7 @@ public class PlayerStateMachine : MonoBehaviour {
         _animationHandler = GetComponent<AnimationHandler>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _knife = GetComponentInChildren<Knife>();
+        _ledgeCheck = GetComponentInChildren<LedgeCheck>();
         //setup state
         _states = new PlayerStateFactory(this);
         //
@@ -63,10 +66,10 @@ public class PlayerStateMachine : MonoBehaviour {
     }
 
     private void UpdateValues(){
-        _playerStats.isTouchingWallLeft = _playerStats.TouchingLeftWallCheck();
-        _playerStats.isTouchingWallRight = _playerStats.TouchingRightWallCheck();
-        _playerStats.isNearLedgeLeft = _playerStats.NearEdgeLeftCheck();
-        _playerStats.isNearLedgeRight = _playerStats.NearEdgeRightCheck();
+        //_playerStats.isTouchingWallLeft = _playerStats.TouchingLeftWallCheck();
+        //_playerStats.isTouchingWallRight = _playerStats.TouchingRightWallCheck();
+        //_playerStats.isNearLedgeLeft = _playerStats.NearEdgeLeftCheck();
+        //_playerStats.isNearLedgeRight = _playerStats.NearEdgeRightCheck();
         if(!_playerStats.isInAir && _canFlipSprite){
             if(_movementX < 0 || _playerStats.isTouchingWallLeft){
                 _spriteRenderer.flipX = true;
@@ -78,18 +81,6 @@ public class PlayerStateMachine : MonoBehaviour {
             direction = -1;
         } else {
             direction = 1;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground"){
-            _playerStats.isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground"){
-            _playerStats.isGrounded = false;
         }
     }
 
