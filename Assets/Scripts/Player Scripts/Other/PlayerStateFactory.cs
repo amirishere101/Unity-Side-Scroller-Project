@@ -13,9 +13,16 @@ public class PlayerStateFactory {
     public PlayerBaseState Idle(){
         return new PlayerIdleState(_context, this);
     }
+    public PlayerBaseState ToWalk(){
+        return new PlayerToWalkState(_context, this);
+    }
 
     public PlayerBaseState Walk(){
         return new PlayerWalkState(_context, this);
+    }
+
+    public PlayerBaseState BreakWalk(){
+        return new PlayerBreakWalkState(_context, this);
     }
 
     public PlayerBaseState Climb(){
@@ -81,9 +88,17 @@ public class PlayerStateFactory {
     public PlayerBaseState CrouchWalk(){
         return new CrouchWalk(_context, this);
     }
+    
+    public PlayerBaseState ToRun(){
+        return new PlayerToRunState(_context, this);
+    }
+
+    public PlayerBaseState BreakRun(){
+        return new PlayerBreakRunState(_context, this);
+    }
 
     public PlayerBaseState Run(){
-        return new PlayerSprint(_context, this);
+        return new PlayerRunState(_context, this);
     }
 
     public PlayerBaseState KnifeAttack1(){

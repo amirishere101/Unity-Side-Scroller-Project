@@ -14,7 +14,11 @@ public class PlayerStats : MonoBehaviour {
     [Header("Movement")]
     public float currentSpeed;
     public float walkSpeed;
+    public float walkAcceleration;
     public float runSpeed;
+    public float runAcceleration;
+    public float sprintSpeed;
+    public float sprintAcceleration;
     public float climbSpeed;
     public float climbSlideSpeed;
 

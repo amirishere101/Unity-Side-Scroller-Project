@@ -20,7 +20,7 @@ public class PlayerIdleState : PlayerBaseState {
         if(_ctx._isAttackPressed){
             SwitchState(_factory.KnifeAttack1());
         }else if(_ctx._movementInputDetected){
-            SwitchState(_factory.Walk());
+            SwitchState(_factory.ToWalk());
         }
     }
 

@@ -12,7 +12,9 @@ public class PlayerAttackState : PlayerBaseState{
         allowNextAttack = false;
         _ctx._isAttackPressed = false;
         _ctx._animationHandler.PlayAnimation("Knife Attack 1");
-        _ctx._knife.EnableKnifeHitbox();
+        if(_ctx._knife != null) {
+            _ctx._knife.EnableKnifeHitbox();
+        }
     }
 
     public override void CheckSwitchStates() {
