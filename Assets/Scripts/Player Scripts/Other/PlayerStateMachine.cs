@@ -39,6 +39,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public bool _isCrouchPressed;
     public bool _isShiftPressed;
     public bool _isAttackPressed;
+    public int _attackCounter;
 
 
     private void Awake(){
@@ -188,10 +189,11 @@ public class PlayerStateMachine : MonoBehaviour {
             _isAttackPressed = false;
         } else {
             if(input > 0){
-            _isAttackPressed = true;
-        } else {
-            _isAttackPressed = false;
-        }
+                _attackCounter++;
+                _isAttackPressed = true;
+            } else {
+                _isAttackPressed = false;
+            }
         }
     }
     #endregion

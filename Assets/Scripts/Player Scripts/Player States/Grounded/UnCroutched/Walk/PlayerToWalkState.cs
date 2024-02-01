@@ -19,7 +19,7 @@ public class PlayerToWalkState : PlayerBaseState {
     public override void CheckSwitchStates(){
         _ctx._animationHandler.IfCurrentAnimationEndThen(LoopWalk);
         if(_ctx._isAttackPressed){
-            SwitchState(_factory.KnifeAttack1());
+            SwitchState(_factory.LightAttack1());
         }else if(!_ctx._movementInputDetected) {
             SwitchState(_factory.Idle());
         } else if(_ctx._isShiftPressed){

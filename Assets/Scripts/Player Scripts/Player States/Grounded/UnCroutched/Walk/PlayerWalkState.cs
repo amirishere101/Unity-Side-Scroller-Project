@@ -17,7 +17,7 @@ public class PlayerWalkState : PlayerBaseState {
 
     public override void CheckSwitchStates(){
         if(_ctx._isAttackPressed){
-            SwitchState(_factory.KnifeAttack1());
+            SwitchState(_factory.LightAttack1());
         }else if(!_ctx._movementInputDetected) {
             SwitchState(_factory.Idle());
         } else if(_ctx._isShiftPressed){

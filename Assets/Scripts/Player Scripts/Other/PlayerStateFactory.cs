@@ -110,9 +110,18 @@ public class PlayerStateFactory {
         return new PlayerRunState(_context, this);
     }
 
-    public PlayerBaseState KnifeAttack1(){
-        return new PlayerAttackState(_context, this);
+    public PlayerBaseState LightAttack1(){
+        return new PlayerAttack1State(_context, this);
     }
+
+    public PlayerBaseState LightAttack2(){
+        return new PlayerAttack2State(_context, this);
+    }
+
+    public PlayerBaseState LightAttack3(){
+        return new PlayerAttack3State(_context, this);
+    }
+
 
     public PlayerBaseState KnifeAttackCooldown(){
         return new PlayerAttackCooldownState(_context, this);
