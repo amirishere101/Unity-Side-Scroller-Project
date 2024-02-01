@@ -9,7 +9,7 @@ public class PlayerInAirState : PlayerBaseState {
     }
 
     public override void CheckSwitchStates() {
-        if(((_ctx._playerStats.isTouchingWallLeft && _ctx._movementLeft < 0) || (_ctx._playerStats.isTouchingWallRight && _ctx._movementRight > 0)) 
+        if((_ctx._playerStats.isTouchingWallLeft && _ctx._movementLeft < 0) || (_ctx._playerStats.isTouchingWallRight && _ctx._movementRight > 0) 
         || (_ctx._playerStats.isJumping &&(_ctx._playerStats.isTouchingWallLeft || _ctx._playerStats.isTouchingWallRight))){
             SwitchState(_factory.WallGrab());
         } else if(_ctx._playerStats.playerLanded){
@@ -21,11 +21,11 @@ public class PlayerInAirState : PlayerBaseState {
         Debug.Log("In Air " + Time.time);
         _ctx.EnableGravity();
         _ctx._playerStats.isInAir = true;
+        _ctx._playerStats.playerLanded = false;
     }
 
     public override void ExitState() {
         _ctx._playerStats.isInAir = false;
-        _ctx._playerStats.playerLanded = false;
         _ctx._playerStats.inAirTimer = 0;
     }
 

@@ -8346,6 +8346,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 408536224047259029, guid: 15b2faa3ab124d5468957e87279d3e46, type: 3}
+      propertyPath: jumpVelocity
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 408536224047259029, guid: 15b2faa3ab124d5468957e87279d3e46, type: 3}
       propertyPath: runAcceleration
       value: 6
       objectReference: {fileID: 0}
@@ -8359,11 +8363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408536224047259033, guid: 15b2faa3ab124d5468957e87279d3e46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.03
+      value: -35.43
       objectReference: {fileID: 0}
     - target: {fileID: 408536224047259033, guid: 15b2faa3ab124d5468957e87279d3e46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.97
+      value: 15.83
       objectReference: {fileID: 0}
     - target: {fileID: 408536224047259033, guid: 15b2faa3ab124d5468957e87279d3e46, type: 3}
       propertyPath: m_LocalPosition.z

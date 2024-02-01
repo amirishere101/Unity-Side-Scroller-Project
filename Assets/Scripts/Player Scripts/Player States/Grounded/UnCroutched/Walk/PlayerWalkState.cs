@@ -19,7 +19,7 @@ public class PlayerWalkState : PlayerBaseState {
         if(_ctx._isAttackPressed){
             SwitchState(_factory.KnifeAttack1());
         }else if(!_ctx._movementInputDetected) {
-            SwitchState(_factory.BreakWalk());
+            SwitchState(_factory.Idle());
         } else if(_ctx._isShiftPressed){
             SwitchState(_factory.ToRun());
         }

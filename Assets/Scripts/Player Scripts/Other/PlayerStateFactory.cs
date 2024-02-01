@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,8 +70,8 @@ public class PlayerStateFactory {
         return new PlayerLedgeClimbState(_context, this);
     }
 
-    public PlayerBaseState Land(){
-        return new PlayerLandState(_context, this);
+    public PlayerBaseState Land(bool hardLand){
+        return new PlayerLandState(_context, this, hardLand);
     }
 
     public PlayerBaseState Crouch(){

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFallingState : PlayerBaseState {
     float _coyoteTime = 0.15f;
     float _landTime = 0.3f;
+    float _hardLandTime = 0.5f;
 
     public PlayerFallingState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) {
     }
@@ -18,15 +19,18 @@ public class PlayerFallingState : PlayerBaseState {
         if(_ctx._playerStats.inAirTimer < _coyoteTime && _ctx._isJumpPressed){
             SwitchState(_factory.Jump());
         }
-        if(_ctx._playerStats.isGrounded && _ctx._playerStats.inAirTimer > _landTime){
-            SwitchState(_factory.Land());
-        } else if(_ctx._playerStats.isGrounded){
+
+        if(_ctx._playerStats.isGrounded && _ctx._playerStats.inAirTimer > _landTime && _ctx._playerStats.inAirTimer < _hardLandTime){
+            SwitchState(_factory.Land(false));
+        } else if(_ctx._playerStats.isGrounded && _ctx._playerStats.inAirTimer >= _hardLandTime){
+            //change back to true here when the animation is fixed :)
+            SwitchState(_factory.Land(false));
+        }else if(_ctx._playerStats.isGrounded){
             _ctx._playerStats.playerLanded = true;
         }
     }
 
     public override void ExitState() {
-        _ctx._playerStats.playerLanded = false;
     }
 
     public override void InitializeSubState()
@@ -40,9 +44,9 @@ public class PlayerFallingState : PlayerBaseState {
     }
 
     void HandleFall(){
-        Vector2 fallVelocity = Vector2.up * Physics2D.gravity.y * (_ctx._playerStats.fallMultiplier - 1) * Time.deltaTime;
-        if(fallVelocity.y > _ctx._playerStats.maxFallVelocity){
-            _ctx._rb.velocity += fallVelocity;
-        }
+        // Vector2 fallVelocity = Vector2.up * Physics2D.gravity.y * (_ctx._playerStats.fallMultiplier - 1) * Time.deltaTime;
+        // if(fallVelocity.y > _ctx._playerStats.maxFallVelocity){
+        //     _ctx._rb.velocity += fallVelocity;
+        // }
     }
 }

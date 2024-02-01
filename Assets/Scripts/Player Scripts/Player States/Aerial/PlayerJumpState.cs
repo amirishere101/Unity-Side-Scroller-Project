@@ -41,6 +41,6 @@ public class PlayerJumpState : PlayerBaseState {
     }
 
     private void HandleJumping(){
-        _ctx._rb.velocity = new Vector2(_ctx._playerStats.currentSpeed * 2/3 * _ctx._movementX, _ctx._playerStats.jumpVelocity);
+        _ctx._rb.velocity = new Vector2(_ctx._playerStats.currentSpeed * 2 * _ctx._movementX, _ctx._playerStats.jumpVelocity);
     }
 }
