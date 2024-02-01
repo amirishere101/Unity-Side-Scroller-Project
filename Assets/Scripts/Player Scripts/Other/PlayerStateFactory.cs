@@ -82,6 +82,14 @@ public class PlayerStateFactory {
         return new PlayerUnCrouchedState(_context, this);
     }
 
+    public PlayerBaseState ToCrouch(){
+        return new ToCrouch(_context, this);
+    }
+
+    public PlayerBaseState OutCrouch(){
+        return new OutCrouch(_context, this);
+    }
+
     public PlayerBaseState CrouchIdle(){
         return new CrouchIdle(_context, this);
     }

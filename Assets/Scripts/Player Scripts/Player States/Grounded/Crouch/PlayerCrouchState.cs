@@ -18,14 +18,11 @@ public class PlayerCrouchState : PlayerBaseState
     }
 
     public override void CheckSwitchStates() {
-        if(!_ctx._isCrouchPressed){
-            SwitchState(_factory.UnCrouch());
-        }
     }
 
     public override void InitializeSubState(){
         if(!_ctx._movementInputDetected){
-            SetSubState(_factory.CrouchIdle());
+            SetSubState(_factory.ToCrouch());
         } else {
             SetSubState(_factory.CrouchWalk());
         }

@@ -7,8 +7,6 @@ public class CrouchIdle : PlayerBaseState
     public CrouchIdle(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory){}
 
     public override void EnterState(){
-        Debug.Log("Crouch Idle" + Time.time);
-        _ctx._rb.velocity = Vector2.zero;
         _ctx._animationHandler.PlayAnimation("Crouch");
     }
 
@@ -17,8 +15,9 @@ public class CrouchIdle : PlayerBaseState
     }
 
     public override void CheckSwitchStates(){
-        if(_ctx._movementInputDetected){
-            SwitchState(_factory.CrouchWalk());
+        if(!_ctx._isCrouchPressed){
+            //ANIMATIONS NOT YET IMPLEMENTED
+            SwitchState(_factory.OutCrouch());
         }
     }
 
