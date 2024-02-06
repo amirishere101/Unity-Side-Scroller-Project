@@ -21,11 +21,13 @@ public class PlayerCrouchState : PlayerBaseState
     }
 
     public override void InitializeSubState(){
-        if(!_ctx._movementInputDetected){
-            SetSubState(_factory.ToCrouch());
-        } else {
-            SetSubState(_factory.CrouchWalk());
-        }
+        SetSubState(_factory.ToCrouch());
+        //NOT YET IMPLEMENTED
+        // if(!_ctx._movementInputDetected){
+        //     SetSubState(_factory.ToCrouch());
+        // } else {
+        //     SetSubState(_factory.CrouchWalk());
+        // }
     }
 
     public override void ExitState(){}

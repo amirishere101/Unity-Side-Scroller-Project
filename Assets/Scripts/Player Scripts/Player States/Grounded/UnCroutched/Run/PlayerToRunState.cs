@@ -13,7 +13,9 @@ public class PlayerToRunState : PlayerBaseState {
     public override void CheckSwitchStates() {
         HandleMovement();
         _ctx._animationHandler.IfCurrentAnimationEndThen(LoopRun);
-        if(!_ctx._movementInputDetected) {
+        if(_ctx._isAttackPressed) {
+            SwitchState(_factory.LightAttack1());
+        }else if(!_ctx._movementInputDetected) {
             SwitchState(_factory.Idle());
         } else if(!_ctx._isShiftPressed){
             SwitchState(_factory.Walk());

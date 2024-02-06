@@ -8,10 +8,10 @@ public class PlayerAttack3State : PlayerBaseState{
     public override void EnterState(){
         _ctx._canFlipSprite = false;
         _ctx._isAttackPressed = false;
+        _ctx._playerStats.currentAttackDmg = _ctx._playerStats.lightAttack3Dmg;
+        _ctx._playerStats.currentAttackKnockback = _ctx._playerStats.lightAttack3KnockBack;
         _ctx._animationHandler.PlayAnimation("LightAttack3");
-        if(_ctx._knife != null) {
-            _ctx._knife.EnableKnifeHitbox();
-        }
+        _ctx._spriteRenderer.sortingOrder = 8;
     }
 
     public override void CheckSwitchStates() {
@@ -21,9 +21,9 @@ public class PlayerAttack3State : PlayerBaseState{
     public override void ExitState(){
         _ctx._isAttackPressed = false;
         _ctx._attackCounter = 0;
-        if(_ctx._knife != null){
-            _ctx._knife.DisableKnifeHitBox();
-        }
+        _ctx._playerStats.currentAttackDmg = 0;
+        _ctx._playerStats.currentAttackKnockback = 0;
+        _ctx._spriteRenderer.sortingOrder = 10;
     }
 
     public override void InitializeSubState(){

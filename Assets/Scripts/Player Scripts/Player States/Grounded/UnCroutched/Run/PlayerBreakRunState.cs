@@ -11,10 +11,18 @@ public class PlayerBreakRunState : PlayerBaseState {
 
     public override void CheckSwitchStates() {
         HandleMovement();
-        if(_ctx._movementInputDetected){
-            _ctx._animationHandler.IfCurrentAnimationEndThen(Walk);
+        if(_ctx._animationHandler.animator.GetCurrentAnimatorStateInfo(0).length >= 0.6f){
+            if(_ctx._movementInputDetected){
+                _ctx._animationHandler.IfCurrentAnimationEndThen(Walk);
+            } else {
+                _ctx._animationHandler.IfCurrentAnimationEndThen(Idle);
+            }
         } else {
-            _ctx._animationHandler.IfCurrentAnimationEndThen(Idle);
+            if(_ctx._isAttackPressed) {
+                SwitchState(_factory.LightAttack1());
+            } if (_ctx._isShiftPressed && _ctx._movementInputDetected){
+                SwitchState(_factory.Run());
+            }
         }
     }
 

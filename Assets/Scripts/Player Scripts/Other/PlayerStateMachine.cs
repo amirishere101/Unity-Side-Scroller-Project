@@ -13,8 +13,8 @@ public class PlayerStateMachine : MonoBehaviour {
     public PlayerStateFactory _states;
     public SpriteRenderer _spriteRenderer;
     public LedgeCheck _ledgeCheck;
+    public PlayerHitBoxManager _hitBoxManager;
     [SerializeField] public GameObject _surroundingsCheck;
-    [SerializeField] public Knife _knife;
     
 
 
@@ -48,7 +48,6 @@ public class PlayerStateMachine : MonoBehaviour {
         _rb = GetComponent<Rigidbody2D>();
         _animationHandler = GetComponent<AnimationHandler>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _knife = GetComponentInChildren<Knife>();
         _ledgeCheck = GetComponentInChildren<LedgeCheck>();
         //setup state
         _states = new PlayerStateFactory(this);

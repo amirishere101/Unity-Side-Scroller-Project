@@ -16,7 +16,6 @@ public class CrouchIdle : PlayerBaseState
 
     public override void CheckSwitchStates(){
         if(!_ctx._isCrouchPressed){
-            //ANIMATIONS NOT YET IMPLEMENTED
             SwitchState(_factory.OutCrouch());
         }
     }

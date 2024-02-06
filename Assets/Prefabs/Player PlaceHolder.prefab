@@ -1,5 +1,78 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1976516129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1976516130}
+  - component: {fileID: 1976516131}
+  - component: {fileID: 1976516132}
+  m_Layer: 3
+  m_Name: PlayerAttackHitBoxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1976516130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976516129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 408536224047259033}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1976516131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976516129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf9eba7a7838d54a9fdd08c182ad8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 408536224047259037}
+  playerStats: {fileID: 408536224047259029}
+--- !u!61 &1976516132
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976516129}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.0903635, y: -0.084198}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.261013, y: 1.235754}
+  m_EdgeRadius: 0
 --- !u!1 &408536224047259037
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +89,7 @@ GameObject:
   - component: {fileID: 408536224047259029}
   - component: {fileID: 408536224047259031}
   - component: {fileID: 3220982890943398227}
+  - component: {fileID: 5069967789535597994}
   m_Layer: 3
   m_Name: Player PlaceHolder
   m_TagString: Player
@@ -37,6 +111,7 @@ Transform:
   m_Children:
   - {fileID: 6610247280621570210}
   - {fileID: 6610247282201576605}
+  - {fileID: 1976516130}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -256,15 +331,23 @@ MonoBehaviour:
   maxStamina: 300
   currentStamina: 0
   currentSpeed: 0
-  walkSpeed: 2.5
-  runSpeed: 8
+  walkSpeed: 2
+  walkAcceleration: 6
+  runSpeed: 5
+  runAcceleration: 6
+  sprintSpeed: 0
+  sprintAcceleration: 0
   climbSpeed: 2
   climbSlideSpeed: 4
-  jumpVelocity: 13
+  jumpVelocity: 9
   wallJumpPower: {x: 8, y: 12}
   fallMultiplier: 1.5
   lowJumpMultiplier: 2
   maxFallVelocity: -40
+  lightAttack1Dmg: 10
+  lightAttack1KnockBack: 3
+  lightAttack2Dmg: 10
+  lightAttack3Dmg: 25
   groundDetectorLength: 1.5
   WallDetectorLength: 0.4
   EdgeDetectorHeight: 0.45
@@ -322,7 +405,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 0}
   _ledgeCheck: {fileID: 0}
   _surroundingsCheck: {fileID: 6610247282201576594}
-  _knife: {fileID: 0}
   _movementX: 0
   direction: 0
   _canJump: 0
@@ -339,6 +421,19 @@ MonoBehaviour:
   _isCrouchPressed: 0
   _isShiftPressed: 0
   _isAttackPressed: 0
+  _attackCounter: 0
+--- !u!114 &5069967789535597994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408536224047259037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f6d84b47c66b641a600ed812ffaa05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6610247280621570211
 GameObject:
   m_ObjectHideFlags: 0

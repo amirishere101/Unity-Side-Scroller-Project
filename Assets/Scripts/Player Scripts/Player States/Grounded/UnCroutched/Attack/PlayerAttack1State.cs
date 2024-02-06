@@ -13,10 +13,9 @@ public class PlayerAttack1State : PlayerBaseState{
         _ctx._canFlipSprite = false;
         _ctx._isAttackPressed = false;
         _ctx._rb.velocity = Vector2.zero;
+        _ctx._playerStats.currentAttackDmg = _ctx._playerStats.lightAttack1Dmg;
+        _ctx._playerStats.currentAttackKnockback = _ctx._playerStats.lightAttack1KnockBack;
         _ctx._animationHandler.PlayAnimation("LightAttack1");
-        if(_ctx._knife != null) {
-            _ctx._knife.EnableKnifeHitbox();
-        }
     }
 
     public override void CheckSwitchStates() {
@@ -32,9 +31,8 @@ public class PlayerAttack1State : PlayerBaseState{
     }
 
     public override void ExitState(){
-        if(_ctx._knife != null){
-            _ctx._knife.DisableKnifeHitBox();
-        }
+        _ctx._playerStats.currentAttackDmg = 0;
+        _ctx._playerStats.currentAttackKnockback = 0;
     }
 
     public override void InitializeSubState(){

@@ -10,7 +10,9 @@ public class PlayerRunState : PlayerBaseState {
     }
 
     public override void CheckSwitchStates() {
-        if(!_ctx._movementInputDetected || !_ctx._isShiftPressed) {
+        if(_ctx._isAttackPressed) {
+            SwitchState(_factory.LightAttack1());
+        }else if(!_ctx._movementInputDetected || !_ctx._isShiftPressed) {
             SwitchState(_factory.BreakRun());
         }
     }

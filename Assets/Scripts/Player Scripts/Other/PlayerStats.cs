@@ -29,6 +29,15 @@ public class PlayerStats : MonoBehaviour {
     public float lowJumpMultiplier = 2f;
     public float maxFallVelocity = -40;
 
+    [Header("Attacking")]
+    public float currentAttackDmg;
+    public float currentAttackKnockback;
+    public float lightAttack1Dmg = 10;
+    public float lightAttack1KnockBack = 1f;
+    public float lightAttack2Dmg = 10;
+    public float lightAttack2KnockBack = 1f;
+    public float lightAttack3Dmg = 25;
+    public float lightAttack3KnockBack = 2f;
     [Header("RayCasts")]
     [SerializeField] public float groundDetectorLength = 1;
     [SerializeField] public float WallDetectorLength = 1;

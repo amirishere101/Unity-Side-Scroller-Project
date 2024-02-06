@@ -17,7 +17,11 @@ public class ToCrouch : PlayerBaseState
     }
 
     public override void CheckSwitchStates(){
-        _ctx._animationHandler.IfCurrentAnimationEndThen(Idle);
+        if(_ctx._isCrouchPressed){
+            _ctx._animationHandler.IfCurrentAnimationEndThen(Idle);
+        } else {
+            SwitchState(_factory.OutCrouch());
+        }
         if(_ctx._movementInputDetected){
             //ANIMATIONS NOT YET IMPLEMENTED
             //SwitchState(_factory.CrouchWalk());

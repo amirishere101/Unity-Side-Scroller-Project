@@ -121,9 +121,4 @@ public class PlayerStateFactory {
     public PlayerBaseState LightAttack3(){
         return new PlayerAttack3State(_context, this);
     }
-
-
-    public PlayerBaseState KnifeAttackCooldown(){
-        return new PlayerAttackCooldownState(_context, this);
-    }
 }
