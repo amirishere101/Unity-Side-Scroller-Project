@@ -26,6 +26,8 @@ public class PlayerUnCrouchedState : PlayerBaseState
     public override void InitializeSubState(){
         if(!_ctx._movementInputDetected){
             SetSubState(_factory.Idle());
+        } else if(_ctx._isShiftPressed){
+            SetSubState(_factory.Run());
         } else {
             SetSubState(_factory.Walk());
         }

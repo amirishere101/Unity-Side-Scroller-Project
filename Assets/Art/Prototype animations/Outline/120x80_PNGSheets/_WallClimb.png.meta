@@ -3,7 +3,7 @@ guid: b0c7fd82b22ccfc4d9d42093cde3f89c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -273,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      _WallClimb_5: -1323259690
+      _WallClimb_0: 977234937
+      _WallClimb_1: -1746031956
       _WallClimb_2: -204734565
       _WallClimb_3: 1343531042
-      _WallClimb_6: 1121956487
       _WallClimb_4: -186835376
-      _WallClimb_1: -1746031956
-      _WallClimb_0: 977234937
+      _WallClimb_5: -1323259690
+      _WallClimb_6: 1121956487
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

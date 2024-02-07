@@ -10,8 +10,7 @@ public class PlayerBreakRunState : PlayerBaseState {
     }
 
     public override void CheckSwitchStates() {
-        HandleMovement();
-        if(_ctx._animationHandler.animator.GetCurrentAnimatorStateInfo(0).length >= 0.6f){
+        if(_ctx._animationHandler.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f){
             if(_ctx._movementInputDetected){
                 _ctx._animationHandler.IfCurrentAnimationEndThen(Walk);
             } else {
@@ -33,12 +32,6 @@ public class PlayerBreakRunState : PlayerBaseState {
     public override void ExitState() {}
 
     public override void InitializeSubState() {}
-
-    private void HandleMovement(){
-       _ctx._playerStats.currentSpeed -= _ctx._playerStats.walkAcceleration * Time.deltaTime;
-        _ctx._playerStats.currentSpeed = Mathf.Clamp(_ctx._playerStats.currentSpeed, 0, _ctx._playerStats.walkSpeed);
-       _ctx._rb.velocity = new Vector2(_ctx._movementX * _ctx._playerStats.currentSpeed, _ctx._rb.velocity.y); 
-    }
 
     void Idle(){
         SwitchState(_factory.Idle());

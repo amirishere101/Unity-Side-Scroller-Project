@@ -3,7 +3,7 @@ guid: 431dd5c4f67387d4d84cecfead05c7fa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -294,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      _CrouchWalk_4: 1670805893
-      _CrouchWalk_7: -502068282
       _CrouchWalk_0: -1771101160
-      _CrouchWalk_5: 552129450
       _CrouchWalk_1: -2034825389
-      _CrouchWalk_3: -1353475394
       _CrouchWalk_2: 149836701
+      _CrouchWalk_3: -1353475394
+      _CrouchWalk_4: 1670805893
+      _CrouchWalk_5: 552129450
       _CrouchWalk_6: -275956901
+      _CrouchWalk_7: -502068282
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

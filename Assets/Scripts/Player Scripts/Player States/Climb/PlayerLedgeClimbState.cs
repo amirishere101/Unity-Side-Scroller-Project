@@ -14,12 +14,10 @@ public class PlayerLedgeClimbState : PlayerBaseState{
     public override void EnterState() {
         Debug.Log("Ledge Climb" + Time.time);
         _ctx._rb.velocity = Vector2.zero;
-        _ctx.DisableGravity();
         _ctx._animationHandler.PlayAnimation("Ledge Climb");
     }
 
     public override void ExitState(){
-        
     }
 
     public override void InitializeSubState()

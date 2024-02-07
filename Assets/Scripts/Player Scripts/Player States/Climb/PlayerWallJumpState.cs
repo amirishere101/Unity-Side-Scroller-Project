@@ -9,7 +9,6 @@ public class PlayerWallJumpState : PlayerBaseState {
 
     public override void EnterState() {
         Debug.Log("Wall Jumping " + Time.time);
-        _ctx.EnableGravity();
         HandleWallJump();
         _ctx._animationHandler.PlayAnimation("Jump");
     }

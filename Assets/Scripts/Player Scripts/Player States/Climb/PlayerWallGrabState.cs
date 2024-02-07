@@ -11,7 +11,6 @@ public class PlayerWallGrabState : PlayerBaseState {
 
     public override void EnterState() {
         Debug.Log("Wall Grab State " + Time.time);
-        _ctx.DisableGravity();
         _ctx._animationHandler.PlayAnimation("WallHang");
         _ctx._playerStats.isClimbing = true;
         _ctx._rb.velocity = new Vector2(50* _ctx._movementX, 0);
@@ -28,7 +27,6 @@ public class PlayerWallGrabState : PlayerBaseState {
     }
 
     public override void ExitState() {
-        _ctx.EnableGravity();
         _ctx._playerStats.isClimbing = false;
     }
 

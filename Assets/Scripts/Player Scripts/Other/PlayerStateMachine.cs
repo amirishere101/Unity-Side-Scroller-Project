@@ -92,10 +92,6 @@ public class PlayerStateMachine : MonoBehaviour {
         _isInteracting = false;
     }
 
-    public void AllowCombo(){
-        _animationHandler.SetBool("Combo", false);
-    }
-
     private void UpdateMovementInput(){
         _movementX = _movementLeft + _movementRight;
         if(_movementX == 0){

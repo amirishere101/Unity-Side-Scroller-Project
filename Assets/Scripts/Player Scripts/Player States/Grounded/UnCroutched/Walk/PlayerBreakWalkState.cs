@@ -13,7 +13,6 @@ public class PlayerBreakWalkState : PlayerBaseState {
     }
 
     public override void UpdateState(){
-        HandleMovement();
         CheckSwitchStates();
     }
 
@@ -24,12 +23,6 @@ public class PlayerBreakWalkState : PlayerBaseState {
     public override void ExitState(){
         _ctx._rb.velocity = Vector2.zero;
         _ctx._playerStats.currentSpeed = 0;
-    }
-
-    private void HandleMovement(){
-        _ctx._playerStats.currentSpeed -= _ctx._playerStats.walkAcceleration * Time.deltaTime;
-        _ctx._playerStats.currentSpeed = Mathf.Clamp(_ctx._playerStats.currentSpeed, 0, _ctx._playerStats.walkSpeed);
-       _ctx._rb.velocity = new Vector2(_ctx._movementX * _ctx._playerStats.currentSpeed, _ctx._rb.velocity.y);
     }
 
     void Idle(){

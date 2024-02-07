@@ -19,7 +19,6 @@ public class PlayerInAirState : PlayerBaseState {
 
     public override void EnterState() {
         Debug.Log("In Air " + Time.time);
-        _ctx.EnableGravity();
         _ctx._playerStats.isInAir = true;
         _ctx._playerStats.playerLanded = false;
     }

@@ -44,9 +44,6 @@ public class PlayerFallingState : PlayerBaseState {
     }
 
     void HandleFall(){
-        // Vector2 fallVelocity = Vector2.up * Physics2D.gravity.y * (_ctx._playerStats.fallMultiplier - 1) * Time.deltaTime;
-        // if(fallVelocity.y > _ctx._playerStats.maxFallVelocity){
-        //     _ctx._rb.velocity += fallVelocity;
-        // }
+       _ctx._rb.velocity = new Vector2(_ctx._movementX * _ctx._playerStats.currentSpeed, _ctx._rb.velocity.y);
     }
 }
